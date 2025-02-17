@@ -29,6 +29,7 @@ fn main() {
 }
 
 fn spam_webhook(client: &reqwest::blocking::Client, webhook: &str, message: &str, spam_count: i32) {
+    
     let mut body = HashMap::new();
 
     body.insert("content", message);
