@@ -24,11 +24,11 @@ fn main() {
     let client = reqwest::blocking::Client::new();
 
     let spam_count = args.get(3).unwrap().trim().parse().expect("Spam count must be valid integer!");        
-    spam_webhook(&client, &webhook, args.get(2).unwrap(), spam_count);
+    spam_webhook_and_delete(&client, &webhook, args.get(2).unwrap(), spam_count);
 
 }
 
-fn spam_webhook(client: &reqwest::blocking::Client, webhook: &str, message: &str, spam_count: i32) {
+fn spam_webhook_and_delete(client: &reqwest::blocking::Client, webhook: &str, message: &str, spam_count: i32) {
     
     let mut body = HashMap::new();
 
@@ -47,5 +47,8 @@ fn spam_webhook(client: &reqwest::blocking::Client, webhook: &str, message: &str
         i += 1;
 
     }
+
+    let _ = client.delete(webhook)
+        .send();
 
 }
