@@ -10,7 +10,9 @@ Build with the `cargo build --release` command.
 
 whbomb \<WebHook URL\> \<Message\> \<Count\>
 
-> Spams a webhook with message count number of times.
+> **Example**: whbomb https://discord.com/api/webhooks/id/token "Example Message" 10
+
+> Sends the message "Example Message" to the webhook link 10 times, and then deletes the webhook.
 
 # Warning
 
